@@ -1,0 +1,30 @@
+body {
+    background-color: #DDDDDD;
+    color: #333333;
+    font-family: Arial, sans-serif;
+}
+
+a:active {
+    color: #ffa600;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ff4000;
+    text-decoration: none;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}

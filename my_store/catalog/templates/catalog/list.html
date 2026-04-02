@@ -1,15 +1,18 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Каталог товаров</title>
 </head>
 <body>
     <h1>Каталог товаров</h1>
-    <div>
+    <div class="product-list">
         {% for product in products %}
-            <div>
+            <div class="product">
                 <a href="{{ product.get_absolute_url }}"><h2>{{ product.name }}</h2></a>
                 <p>
                     <a href="{{ product.get_absolute_url }}">
