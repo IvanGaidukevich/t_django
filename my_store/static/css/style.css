@@ -28,3 +28,18 @@ a:visited {
     margin-bottom: 20px;
     border-radius: 5px;
 }
+
+#header {
+    background-color: #333333;
+    color: #FFFFFF;
+    font-size: 24px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+#side {
+    padding: 10px;
+    font-size: 18px;
+    width: 200px;
+    float: left;
+}

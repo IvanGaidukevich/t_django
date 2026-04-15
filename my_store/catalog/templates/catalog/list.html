@@ -1,14 +1,13 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Каталог товаров</title>
-</head>
-<body>
+
+{% block title %}Каталог товаров{% endblock %}
+
+{% block side %}
+{% endblock %}
+
+{% block content %}
     <h1>Каталог товаров</h1>
     <div class="product-list">
         {% for product in products %}
@@ -24,5 +23,4 @@
             </div>
         {% endfor %}
     </div>
-</body>
-</html>
+{% endblock %}
