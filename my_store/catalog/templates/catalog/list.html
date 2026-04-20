@@ -4,7 +4,20 @@
 
 {% block title %}Каталог товаров{% endblock %}
 
-{% block side %}
+{% block sidebar %}
+<h3>Меню</h3>
+<ul>
+    <li>
+        {% if not category %}{% endif %}
+        <a href="{% url 'catalog:product_list' %}">Все товары</a>
+    </li>
+    {% for c in categories %}
+        <li>
+            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
 {% endblock %}
 
 {% block content %}

@@ -23,15 +23,7 @@
 
 <div class="main">
     <div class="side">
-        <h3>Меню</h3>
-        <ul>
-            <li>Пицца</li>
-            <li>Паста</li>
-            <li>Салаты</li>
-            <li>Десерты</li>
-            <li>Напитки</li>
-        </ul>
-
+        {% block sidebar %}{% endblock %}
     </div>
     <div class="content">{% block content %}{% endblock %}</div>
 </div>
