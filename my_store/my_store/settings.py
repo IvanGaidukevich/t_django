@@ -129,3 +129,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Sessions
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7
+CART_SESSION_ID = 'cart'

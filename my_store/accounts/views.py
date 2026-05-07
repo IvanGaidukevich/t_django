@@ -11,7 +11,7 @@ def register_view(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('catalog:product_list')
+            return redirect('accounts:profile_view')
     else:
         form = CustomUserCreationForm()
     return render(request, 'registration/registration.html', {'form': form})
