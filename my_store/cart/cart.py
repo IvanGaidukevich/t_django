@@ -41,15 +41,15 @@ class Cart:
     
 
     def __len__(self):
-       return sum(item['quanity'] for item in self.cart.values()) 
+       return sum(item['quantity'] for item in self.cart.values()) 
     
 
     def __iter__(self):
         products_ids = self.cart.keys()
-        products = Product.object.filter(id__in =products_ids)
+        products = Product.objects.filter(id__in =products_ids)
         cart = self.cart.copy()
         for product in products:
-            cart[str[product.id]]['product'] = product
+            cart[str(product.id)]['product'] = product
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']

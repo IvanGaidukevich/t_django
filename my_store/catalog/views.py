@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from catalog.models import Product, Category
+from cart.forms import CartAddProductForm
 
 
 
@@ -19,4 +20,8 @@ def product_list(request, category_slug=None):
 
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug)
-    return render(request, 'catalog/detail.html', context={"product": product})
+
+    cart_product_form = CartAddProductForm()
+
+    return render(request, 'catalog/detail.html', context={"product": product, 
+                                                           "cart_product_form": cart_product_form})
