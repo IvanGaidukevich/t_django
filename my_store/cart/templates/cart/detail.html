@@ -13,6 +13,8 @@
             <th>Продукт</th>
             <th>Количество</th>
             <th>Цена за штуку</th>
+            <th>Стоимость</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -20,8 +22,27 @@
         {% with product=item.product %}
         <tr>
             <td>{{ product.name }}</td>
-            <td>{{ item.quantity }}</td>
+            <td>
+
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                    {{ item.update_quantity_form.quantity}}
+                    {{ item.update_quantity_form.override}}
+                     {% csrf_token %}
+                    <input type="submit" value="Обновить">
+                </form>
+
+            </td>
             <td>{{ item.price }}</td>
+            <td>
+                {{ item.total_price }}
+            </td>
+
+            <td>
+                 <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                     {% csrf_token %}
+                    <input type="submit" value="X">
+                </form>
+            </td>
         </tr>
         {% endwith %}
         {% endfor %}
