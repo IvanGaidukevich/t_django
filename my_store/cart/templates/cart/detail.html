@@ -49,4 +49,7 @@
     </tbody>
     </table>
     <p>Итого: {{ cart.get_total_price }}</p>
+
+
+    <a href="{% url 'orders:order_create' %}">Оформить заказ</a>
 {% endblock %}
