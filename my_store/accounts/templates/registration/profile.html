@@ -30,4 +30,27 @@
             <h2>Управление аккаунтом</h2>
             <p><a href="{% url 'accounts:logout_view' %}">Выйти из аккаунта</a></p>
         </div>
+
+        <div>
+            <h2>Активные заказы</h2>
+                {% if active_orders %}
+                <ul>
+                    {% for order in active_orders %}
+                        <li>Заказ #{{ order.id }} от {{ order.created_at|date:"d.m.Y H:i" }} на сумму {{ order.get_total_cost }} руб.</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>У вас пока нет активных заказов.</p>
+            {% endif %}
+
+            <h2>Отмененные заказы</h2>
+                {% if canceled_orders %}
+                <ul>
+                    {% for order in canceled_orders %}
+                        <li>Заказ #{{ order.id }} от {{ order.created_at|date:"d.m.Y H:i" }} на сумму {{ order.get_total_cost }} руб.</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>У вас пока нет отмененных заказов.</p>
+            {% endif %}
 {% endblock %}

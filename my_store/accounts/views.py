@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from accounts.forms import CustomUserCreationForm
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required   
+from django.contrib.auth.decorators import login_required
+from orders.models import Order   
 
 
 
@@ -40,5 +41,8 @@ def logout_view(request):
 
 @login_required(login_url='accounts:login_view')
 def profile_view(request):
-    return render(request, 'registration/profile.html')
+    active_orders = Order.objects.filter(user=request.user, status='active').order_by('-created_at')
+    canceled_orders = Order.objects.filter(user=request.user, status='canceled').order_by('-created_at')
+    return render(request, 'registration/profile.html', {'active_orders': active_orders, 
+                                                         'canceled_orders': canceled_orders})
 
