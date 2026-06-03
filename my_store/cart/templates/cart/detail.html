@@ -48,6 +48,14 @@
         {% endfor %}
     </tbody>
     </table>
+
+    <h3>Применить промокод</h3>
+    <form action="{% url "coupons:coupon_apply" %}" method="post">
+        {{coupon_form}}
+        {% csrf_token %}
+        <button type="submit">Применить</button>
+    </form>
+
     <p>Итого: {{ cart.get_total_price }}</p>
 
 
