@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from cart.cart import Cart
 from orders.forms import OrderCreateForm
 from orders.models import OrderItem
+from orders.tasks import order_created_send_mail 
 
 
 @login_required
@@ -24,6 +25,7 @@ def order_create(request):
                 )
             
             cart.clear()
+            # order_created_send_mail.delay(order.id)
             return render(request, 'orders/order/success.html', {'order': order})
 
     else:

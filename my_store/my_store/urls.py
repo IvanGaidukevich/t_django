@@ -23,11 +23,12 @@ from django.urls import path, include
 urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     path('admin/', admin.site.urls),
+    path('api/', include('catalog.api_urls')),
     path('', include('catalog.urls', namespace='catalog')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('orders/', include('orders.urls', namespace='orders')),
     path('coupons/', include('coupons.urls', namespace='coupons')),
-  
+
 ]
 
 if settings.DEBUG:
