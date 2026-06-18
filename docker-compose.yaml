@@ -1,0 +1,36 @@
+services:
+
+  db:
+    image: postgres:17
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: shop_db
+      POSTGRES_USER: shop_user
+      POSTGRES_PASSWORD: shop_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+
+
+  web:
+    build: .
+    container_name: web
+    restart: always
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      gunicorn my_store.wsgi:application --bind 0.0.0.0:8000
+      "
+    volumes:
+    - .:/app
+    ports:
+    - "8005:8000"
+    env_file:
+    - my_store/.env
+    depends_on:
+    - db
+
+
+volumes:
+  postgres_data:
