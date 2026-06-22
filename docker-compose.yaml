@@ -19,15 +19,26 @@ services:
     restart: always
     command: >
       sh -c "
-      python manage.py migrate &&
+      python my_store/manage.py migrate &&
+      python my_store/manage.py collectstatic --noinput &&
       gunicorn my_store.wsgi:application --bind 0.0.0.0:8000
       "
     volumes:
-    - .:/app
+    - .:/my_store
     ports:
     - "8005:8000"
     env_file:
     - my_store/.env
+    environment:
+      DB_ENGINE: django.db.backends.postgresql
+      DB_NAME: shop_db
+      DB_USER: shop_user
+      DB_PASSWORD: shop_password
+      DB_HOST: db
+      DB_PORT: 5432
+      ALLOWED_HOSTS: localhost,127.0.0.1,web
+      PYTHONPATH: /my_store/my_store
+      DJANGO_SETTINGS_MODULE: my_store.settings
     depends_on:
     - db
 

@@ -10,6 +10,6 @@ def order_created_send_mail(order_id):
         subject=f"Ваш заказ №{order.id} от {order.created_at.strftime('%d.%m.%Y %H:%M')}",
         body=f"Спасибо за покупку!\n\nВаш номер заказа: {order.id}\n\n В ближайшее время с вами свяжется оператор!",
         from_email=settings.EMAIL_HOST_USER,
-        to=[order.mail]
+        to=[order.email]
     )
     email.send()
